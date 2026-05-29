@@ -1,0 +1,520 @@
+/* استدعاء خط Cairo المتناسق والمناسب للمواقع الرسمية للشركات */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+:root {
+    --primary-color: #0f172a;  /* الكحلي الغامق الفخم للهوية الهندسية */
+    --accent-color: #eab308;   /* الأصفر الكهربائي الجذاب للأزرار والتنبيهات */
+    --light-bg: #f8fafc;       /* خلفية فاتحة مريحة للعين */
+    --text-color: #334155;     /* لون النصوص الأساسية */
+}
+
+body {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    position: relative;
+}
+
+/* ⚡ إضافة الخلفية الشفافة المعتمدة على صورتك logo1.png للموقع كله */
+body::before {
+    content: "";
+    position: fixed; /* الخلفية ثابتة أثناء النزول في الصفحة */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* ربط الكود بالصورة المحددة داخل مجلد images */
+    background: url('images/logo1.png') no-repeat center center/cover; 
+    
+    opacity: 0.04; /* درجة الشفافية خفيفة جداً (4%) لضمان وضوح فائق للنصوص واللوجوهات */
+    z-index: -1;   /* إرسال الصورة خلف كل عناصر الموقع */
+    pointer-events: none; /* تضمن عدم حجب الضغطات عن الأزرار والفورم */
+}
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* القائمة العلوية Header */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* تنسيق اللوجو الرئيسي في الهيدر */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.logo-text small {
+    color: #cbd5e1;
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-right: 25px;
+}
+
+nav ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.05rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: var(--accent-color);
+}
+
+/* القسم الرئيسي Hero Section */
+.hero {
+    background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.88)), 
+                url('images/logo1.png') no-repeat center center/cover;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 35px;
+    max-width: 800px;
+}
+
+.btn {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 12px 35px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.2s, background-color 0.3s;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #facc15;
+}
+
+/* قسم الأرقام والإنجازات Stats Section */
+.stats-section {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 40px 0;
+    margin-top: -50px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    z-index: 10;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.stat-item i {
+    font-size: 2.2rem;
+    color: var(--accent-color);
+    margin-bottom: 12px;
+}
+
+.stat-item h3 {
+    font-size: 2.4rem;
+    color: white;
+    font-weight: bold;
+}
+
+.stat-item p {
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+/* قسم خبراتنا About Section */
+.about-section {
+    padding: 90px 0 60px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 12px auto 0 auto;
+    border-radius: 2px;
+}
+
+.about-content {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.15rem;
+}
+
+.experience-list {
+    list-style: none;
+    margin-top: 30px;
+    text-align: right;
+    display: inline-block;
+}
+
+.experience-list li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.experience-list i {
+    color: var(--accent-color);
+    margin-left: 12px;
+    font-size: 1.2rem;
+}
+
+/* قسم الخدمات Services Section */
+.services-section {
+    background-color: rgba(241, 245, 249, 0.9);
+    padding: 80px 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.service-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-bottom: 4px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    border-bottom: 4px solid var(--accent-color);
+}
+
+.service-card .icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .icon {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+/* قسم المشاريع الناجحة Projects Section */
+.projects-section {
+    padding: 80px 0;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.project-img {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+}
+
+.placeholder-img {
+    background: linear-gradient(45deg, #1e293b, #475569);
+    text-align: center;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+.project-info {
+    padding: 22px;
+}
+
+.project-info h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.project-info p {
+    font-size: 0.95rem;
+    color: #475569;
+}
+
+/* قسم العملاء المتناسق والمطور */
+.clients-section {
+    background-color: rgba(248, 250, 252, 0.9);
+    padding: 60px 0;
+    border-top: 1px solid #e2e8f0;
+}
+
+.clients-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.client-logo {
+    background: white;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse; 
+    gap: 15px;
+    min-width: 240px;
+}
+
+.client-mini-img {
+    height: 25px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* قسم طلب المقايسة / الفورم Quote Section */
+.quote-section {
+    background-color: rgba(241, 245, 249, 0.9);
+    padding: 80px 0;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.form-container h2 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--accent-color);
+}
+
+.btn-submit {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #1e293b;
+}
+
+/* تذييل الصفحة Footer */
+footer {
+    background-color: var(--primary-color);
+    color: #94a3b8;
+    text-align: center;
+    padding: 25px 0;
+    font-size: 0.95rem;
+    border-top: 2px solid #1e293b;
+}
+
+/* 🛠️ التعديل الاحترافي الشامل للتجاوب مع الموبايل والشاشات الصغيرة */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+        padding: 5px 0;
+    }
+    
+    .logo-link {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .logo-img {
+        height: 38px; /* تصغير اللوجو قليلاً ليناسب الموبايل */
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+    }
+
+    /* تحويل القائمة لسطر مرن متناسق لا يخرج عن الشاشة */
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 12px;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem; /* حجم خط مناسب ومريح للضغط باليد */
+        padding: 4px 6px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .container {
+        width: 92%; /* إعطاء مساحة أكبر للمحتوى على الشاشات الضيقة */
+    }
+
+    /* 🎯 حل مشكلة خروج عناصر الفورم (Form) عن البوكس الأبيض */
+    .form-container {
+        padding: 25px 15px; /* تقليل الحواف الداخلية ليعطي مساحة للمدخلات */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea,
+    .btn-submit {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box; /* يضمن بقاء العناصر بالداخل 100% */
+    }
+    
+    .btn-submit {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    /* ضبط عرض كروت العملاء لتصطف بشكل مريح */
+    .client-logo {
+        min-width: 100%; /* كارت كامل العرض على الموبايل لمنع الانضغاط */
+    }
+}
